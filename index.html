@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Saniya ❤️</title>
+
+<!-- Cute Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#ff9acb,#ff477e);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+/* Main Card */
+.card{
+    width:90%;
+    max-width:400px;
+    padding:25px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.25);
+}
+
+/* Name Style */
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:17px;
+}
+
+/* GIF */
+img{
+    width:180px;
+    max-width:80%;
+    margin:15px 0;
+    border-radius:15px;
+}
+
+/* Buttons Area */
+.buttons{
+    position:relative;
+    height:140px;
+    margin-top:10px;
+}
+
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:30px;
+    font-size:17px;
+    cursor:pointer;
+}
+
+/* YES Button */
+#yesBtn{
+    background:#ff2e63;
+    color:white;
+    font-weight:600;
+    box-shadow:0 6px 18px rgba(0,0,0,0.3);
+    transition:.3s;
+}
+#yesBtn:hover{
+    transform:scale(1.1);
+}
+
+/* NO Button */
+#noBtn{
+    background:white;
+    color:#ff2e63;
+    position:absolute;
+    left:60%;
+}
+
+/* Vibrating Effect */
+.vibrate{
+    animation:vibrate .15s infinite;
+}
+@keyframes vibrate{
+    0%{transform:translate(1px,1px);}
+    25%{transform:translate(-2px,1px);}
+    50%{transform:translate(2px,-1px);}
+    75%{transform:translate(-1px,-2px);}
+    100%{transform:translate(1px,2px);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    font-size:18px;
+    color:rgba(255,255,255,0.6);
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-60px;
+    width:40px;
+    height:50px;
+    border-radius:50%;
+    animation:rise 7s infinite ease-in;
+}
+.balloon:after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:40px;
+    background:white;
+    left:50%;
+    top:50px;
+}
+@keyframes rise{
+    from{transform:translateY(0);}
+    to{transform:translateY(-120vh);}
+}
+
+/* Love Message */
+#message{
+    display:none;
+    margin-top:15px;
+    font-size:20px;
+    font-weight:500;
+    animation:pop .6s ease;
+}
+@keyframes pop{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>SANIYA IMTHIYAS ❤️</h1>
+    <p>Will you be my Valentine? 💖</p>
+
+    <!-- Hello Kitty Hugging -->
+    <img src="https://media.tenor.com/4f5z8J8s8G0AAAAC/hello-kitty-hug.gif" alt="Cute Hug">
+
+    <div class="buttons">
+        <button id="yesBtn">Yes 💕</button>
+        <button id="noBtn">No 😜</button>
+    </div>
+
+    <div id="message">
+        You said YES! 💘<br>
+        Happiest Valentine’s Day ❤️
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+/* Runaway + Vibrate */
+function escape(){
+    const x = Math.random()*260 - 130;
+    const y = Math.random()*140 - 70;
+    noBtn.style.transform=`translate(${x}px,${y}px)`;
+}
+
+/* Desktop */
+noBtn.addEventListener("mouseenter",()=>{
+    noBtn.classList.add("vibrate");
+    escape();
+});
+
+/* Mobile Touch */
+noBtn.addEventListener("touchstart",(e)=>{
+    e.preventDefault();
+    noBtn.classList.add("vibrate");
+    escape();
+});
+
+/* YES Click */
+document.getElementById("yesBtn").onclick=()=>{
+    document.getElementById("message").style.display="block";
+};
+
+/* Create Hearts */
+for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(h);
+}
+
+/* Create Balloons */
+const colors=["#ff4d88","#ff85a2","#ffd1dc","#ff6f91"];
+for(let i=0;i<8;i++){
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.style.left=Math.random()*100+"vw";
+    b.style.background=colors[Math.floor(Math.random()*colors.length)];
+    b.style.animationDuration=(Math.random()*3+5)+"s";
+    document.body.appendChild(b);
+}
+</script>
+
+</body>
+</html>
